@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { JugadoresComponent } from './jugadores/jugadores.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InicioComponent } from './inicio/inicio.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
