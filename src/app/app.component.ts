@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ejercicio-angular';
+  usuario: string;
+  sesionIniciada=false;
+
+  iniciarSesion(usuarioSesion){
+    this.sesionIniciada = true;
+    this.usuario = usuarioSesion;
+    console.log('Usuario logeado: '+ this.usuario);
+  }
 }

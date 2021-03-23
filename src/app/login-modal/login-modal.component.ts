@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
@@ -8,7 +8,9 @@ import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit, AfterViewInit {
+
  @ViewChild('contenido', {static: false}) contenidoModal: NgbModalRef;
+ @Output() inicioSesion = new EventEmitter<string>();
  modalRef: NgbModalRef;
  formulario: FormGroup;
 
@@ -32,6 +34,8 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(){
+    const usuario = this.formulario.get('nombre').value;
+    this.inicioSesion.emit(usuario);
     this.modalRef.close();
 
   }

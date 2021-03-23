@@ -10,8 +10,8 @@
             <h2>Ligas de fútbol</h2>
         </div>
 
-        <div class="nav navbar-nav navbar-right">
-            Usuario
+        <div *ngIf="usuario" class="nav navbar-nav navbar-right">
+           Ha iniciado sesión: {{ usuario }}
         </div>
 
     </div>

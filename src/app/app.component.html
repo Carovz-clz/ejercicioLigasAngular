@@ -1,5 +1,6 @@
-<app-header></app-header>
+<app-header [usuario]="usuario" ></app-header>
 <app-menu></app-menu>
+<app-login-modal *ngIf="!sesionIniciada" (inicioSesion)="iniciarSesion($event)"></app-login-modal>
 <div class="container">
   <div class="row">
     <div class="col">
