@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -6,20 +6,23 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent implements OnInit {
- //@ViewChild('contenido', {static: false}) contenidoModal: NgbModal;
+export class LoginModalComponent implements OnInit, AfterViewInit {
+ @ViewChild('contenido', {static: false}) contenidoModal;
 
   constructor(private modal: NgbModal) { }
 
-  ngOnInit(): void {
-    //console.log(this.contenidoModal);
-    //this.modal.open(this.contenidoModal);
+  ngOnInit() {
+    
+  }
+
+  ngAfterViewInit(){
+    this.abrirModal();
   }
 
 
-  abrirModal(contenido){
-    console.log(contenido);
-    this.modal.open(contenido);
+  abrirModal(){
+    console.log(this.contenidoModal);
+    this.modal.open(this.contenidoModal, { size: 'lg', centered: true });
   }
 
 }
