@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { Liga } from '../shared/liga.model';
+import { ObtencionDatosService } from '../shared/obtencion-datos.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -13,14 +15,20 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
  @Output() inicioSesion = new EventEmitter<string>();
  modalRef: NgbModalRef;
  formulario: FormGroup;
+ arrayLigas: Liga[];
 
-  constructor(private modal: NgbModal) { }
+  constructor(private modal: NgbModal, private obDatosService: ObtencionDatosService) { }
 
   ngOnInit() {
     this.formulario = new FormGroup({
       'nombre': new FormControl(null, Validators.required),
-      'password': new FormControl(null, Validators.required)
+      'password': new FormControl(null, Validators.required),
+      'ligasSelect': new FormControl(this.arrayLigas[0])
     });
+
+    this.arrayLigas = this.obDatosService.obtenerLigas();
+    console.log(this.arrayLigas[0]);
+
   }
 
   ngAfterViewInit(){

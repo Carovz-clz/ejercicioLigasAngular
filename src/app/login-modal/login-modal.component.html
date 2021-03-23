@@ -25,6 +25,13 @@
                 </span>
             </div>
 
+            <div class="form-group">
+                <label for="liga">Seleccione una liga</label>
+                <select name="liga" id="liga" class="form-control" formControlName="ligasSelect" >
+                    <option  [value]="element.id" *ngFor="let element of arrayLigas">{{ element.nombre }}</option>
+                </select>
+            </div>
+
         </div>
 
         <div class="modal-footer">
