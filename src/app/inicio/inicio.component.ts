@@ -9,14 +9,16 @@ import { ObtencionDatosService } from '../shared/obtencion-datos.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  arrayEquipos: Equipo[];
   idLiga: number;
 
   constructor(private ruta: ActivatedRoute, private obDatosService: ObtencionDatosService) { }
 
   ngOnInit(): void {
-    this.idLiga = this.ruta.snapshot.params['id'];
-    this.arrayEquipos =  this.obDatosService.obtenerEquipos(this.idLiga);
+
+  }
+
+  guardarIdLiga(id){
+    this.idLiga = id;
   }
 
  
