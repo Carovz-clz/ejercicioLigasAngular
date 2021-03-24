@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Liga } from './shared/liga.model';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   usuario: string;
-  sesionIniciada=false;
+  liga: Liga;
+  sesionIniciada = false;
 
-  iniciarSesion(usuarioSesion){
+  iniciarSesion(objetoSesion){
     this.sesionIniciada = true;
-    this.usuario = usuarioSesion;
+    this.usuario = objetoSesion.sesion;
+    this.liga = objetoSesion.liga;
     console.log('Usuario logeado: '+ this.usuario);
+    console.log('Liga elegida: '+ this.liga.nombre);
   }
+
+
 }

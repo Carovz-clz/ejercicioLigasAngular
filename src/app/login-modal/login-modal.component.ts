@@ -12,7 +12,7 @@ import { ObtencionDatosService } from '../shared/obtencion-datos.service';
 export class LoginModalComponent implements OnInit, AfterViewInit {
 
  @ViewChild('contenido', {static: false}) contenidoModal: NgbModalRef;
- @Output() inicioSesion = new EventEmitter<string>();
+ @Output() inicioSesion = new EventEmitter<{sesion: string, liga: Liga}>();
  modalRef: NgbModalRef;
  formulario: FormGroup;
  arrayLigas: Liga[];
@@ -20,14 +20,13 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
   constructor(private modal: NgbModal, private obDatosService: ObtencionDatosService) { }
 
   ngOnInit() {
+    this.arrayLigas = this.obDatosService.obtenerLigas();
+
     this.formulario = new FormGroup({
       'nombre': new FormControl(null, Validators.required),
       'password': new FormControl(null, Validators.required),
-      'ligasSelect': new FormControl(this.arrayLigas[0])
+      'ligasSelect': new FormControl(null, Validators.required)
     });
-
-    this.arrayLigas = this.obDatosService.obtenerLigas();
-    console.log(this.arrayLigas[0]);
 
   }
 
@@ -42,8 +41,12 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(){
-    const usuario = this.formulario.get('nombre').value;
-    this.inicioSesion.emit(usuario);
+    let sesion = this.formulario.get('nombre').value;
+    let ligaSelect = +this.formulario.get('ligasSelect').value;
+
+    let liga:Liga = this.arrayLigas.find( l => l.id == ligaSelect );
+
+    this.inicioSesion.emit({sesion, liga});
     this.modalRef.close();
 
   }

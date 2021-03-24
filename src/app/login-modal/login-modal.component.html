@@ -26,10 +26,14 @@
             </div>
 
             <div class="form-group">
-                <label for="liga">Seleccione una liga</label>
-                <select name="liga" id="liga" class="form-control" formControlName="ligasSelect" >
-                    <option  [value]="element.id" *ngFor="let element of arrayLigas">{{ element.nombre }}</option>
+                <label for="ligasSelect">Seleccione una liga</label>
+                <select name="ligasSelect" id="ligasSelect" class="form-control" formControlName="ligasSelect" >
+                    <option  [value]="element.id" *ngFor="let element of arrayLigas; let i = index">{{ element.nombre }} {{ element.temporada }} - {{ element.pais }}</option>
                 </select>
+                <span class="help-block"
+                    *ngIf="!formulario.get('ligasSelect').valid && formulario.get('ligasSelect').touched">
+                    Seleccione una liga
+                </span>
             </div>
 
         </div>

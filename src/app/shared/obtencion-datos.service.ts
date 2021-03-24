@@ -34,10 +34,17 @@ export class ObtencionDatosService {
         //     });
 
  
-        let arrayLigas = [];
+        let arrayLigas: Liga[] = [];
 
         objeto[0].api.leagues.forEach(element => {
-            arrayLigas.push({ id: element.league_id, logo: element.logo, nombre: element.name});
+            let ligaObj: Liga = {
+                id: element.league_id, 
+                logo: element.logo, 
+                nombre: element.name, 
+                pais: element.country, 
+                temporada: element.season
+            }
+            arrayLigas.push(ligaObj);
         });
 
         return arrayLigas;
