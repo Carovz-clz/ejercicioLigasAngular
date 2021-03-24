@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Liga } from './shared/liga.model';
 
 @Component({
@@ -6,17 +7,22 @@ import { Liga } from './shared/liga.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   usuario: string;
   liga: Liga;
   sesionIniciada = false;
+
+  constructor(private router: Router){}
 
   iniciarSesion(objetoSesion){
     this.sesionIniciada = true;
     this.usuario = objetoSesion.sesion;
     this.liga = objetoSesion.liga;
-    console.log('Usuario logeado: '+ this.usuario);
-    console.log('Liga elegida: '+ this.liga.nombre);
+    this.router.navigate(['/inicio', this.liga.id]);
+  }
+
+  ngOnInit(){
   }
 
 

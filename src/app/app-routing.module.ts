@@ -5,7 +5,9 @@ import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/inicio', pathMatch: 'full'},
-  {path:'inicio', component: InicioComponent},
+  {path:'inicio', component: InicioComponent, children:[
+    {path: ':id', component: InicioComponent}
+  ]},
   {path:'eventos', component: EventosComponent},
 ];
 

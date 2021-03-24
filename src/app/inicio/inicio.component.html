@@ -1,1 +1,7 @@
-<h1>Inicio</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <app-equipo *ngFor="let equipoEl of arrayEquipos; let i = index" [equipo]="equipoEl" [index]="i"></app-equipo>
+        </div>
+    </div>
+</div>

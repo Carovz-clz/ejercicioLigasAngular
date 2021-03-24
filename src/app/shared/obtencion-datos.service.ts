@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators"
+import { Equipo } from "./equipo.model";
 import { Evento } from "./evento.model";
 import { Liga } from "./liga.model";
 
@@ -92,5 +93,42 @@ export class ObtencionDatosService {
 
         return arrayEventos;
 
+    }
+
+    obtenerEquipos(idLiga){
+        const headers = {
+            "x-rapidapi-key": "674ca3eec4msh0b12e4d1512aa2bp155cb5jsn0ac096a0badc",
+            "x-rapidapi-host": "api-football-v1.p.rapidapi.com"
+        }
+
+        const requestOptions = {
+            headers: new HttpHeaders(headers)
+        };
+
+        // this.http.get<any>('https://api-football-v1.p.rapidapi.com/v2/teams/league/'+idLiga, requestOptions)
+        //     .subscribe(response => {
+        //         let equipos: any = response;
+        //         console.log(equipos);
+        //     }
+        // );
+
+        let objeto = [{"api":{"results":10,"teams":[{"team_id":8012,"name":"Istiqlol","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/8012.png","country":"Tajikistan","is_national":false,"founded":2007,"venue_name":"Respublikanskiy Stadion im. M.V. Frunze","venue_surface":"artificial turf","venue_address":"Ismoil Somoni Ave.","venue_city":"Dushanbe","venue_capacity":21400},{"team_id":8031,"name":"Khujand","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/8031.png","country":"Tajikistan","is_national":false,"founded":1953,"venue_name":"Stadion Spartak","venue_surface":"grass","venue_address":null,"venue_city":"Khujand","venue_capacity":3000},{"team_id":12261,"name":"CSKA Pomir","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12261.png","country":"Tajikistan","is_national":false,"founded":1950,"venue_name":"Stadion Politekhnikum (CSKA MO RT)","venue_surface":"grass","venue_address":null,"venue_city":"Dushanbe","venue_capacity":2000},{"team_id":12262,"name":"Dushanbe-83","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12262.png","country":"Tajikistan","is_national":false,"founded":null,"venue_name":null,"venue_surface":null,"venue_address":null,"venue_city":null,"venue_capacity":null},{"team_id":12263,"name":"Fayzkand","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12263.png","country":"Tajikistan","is_national":false,"founded":null,"venue_name":null,"venue_surface":null,"venue_address":null,"venue_city":null,"venue_capacity":null},{"team_id":12264,"name":"Istaravshan","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12264.png","country":"Tajikistan","is_national":false,"founded":null,"venue_name":"Stadion Rodnik","venue_surface":"grass","venue_address":null,"venue_city":"Nay","venue_capacity":5000},{"team_id":12265,"name":"Khatlon","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12265.png","country":"Tajikistan","is_national":false,"founded":1960,"venue_name":"Stadion Pakhtakor","venue_surface":"grass","venue_address":null,"venue_city":"Kurgan-Tyube","venue_capacity":8000},{"team_id":12266,"name":"Kuktosh","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12266.png","country":"Tajikistan","is_national":false,"founded":null,"venue_name":"Stadion Neftyanik","venue_surface":"grass","venue_address":null,"venue_city":"Rudaki","venue_capacity":6000},{"team_id":12272,"name":"Ravshan","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/12272.png","country":"Tajikistan","is_national":false,"founded":null,"venue_name":"Stadion im. Langari Langarieva","venue_surface":"grass","venue_address":null,"venue_city":"Kulyab","venue_capacity":20000},{"team_id":16494,"name":"Eskhata","code":null,"logo":"https:\/\/media.api-sports.io\/football\/teams\/16494.png","country":null,"is_national":false,"founded":null,"venue_name":null,"venue_surface":null,"venue_address":null,"venue_city":null,"venue_capacity":null}]}}];
+
+        let arrayEquipos: Equipo[] = [];
+
+        objeto[0].api.teams.forEach(element => {
+            let idE = element.team_id;
+            let nombreE = element.name ? element.name : '';
+            let logoE = element.logo ? element.logo : '';
+
+            let equipoObj: Equipo = {
+                id: idE,
+                nombreEquipo: nombreE, 
+                logo: logoE
+            }
+            arrayEquipos.push(equipoObj);
+        });
+
+        return arrayEquipos;
     }
 }
