@@ -13,6 +13,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
+import { ItemEventoComponent } from './eventos/item-evento/item-evento.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MenuComponent } from './menu/menu.component';
     JugadoresComponent,
     EventosComponent,
     InicioComponent,
-    MenuComponent
+    MenuComponent,
+    ItemEventoComponent
   ],
   imports: [
     BrowserModule,
