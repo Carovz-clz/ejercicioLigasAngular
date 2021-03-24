@@ -4,14 +4,15 @@
             <a class="navbar-brand " routerLink="/inicio">
                 <img class="imagen" src="https://1000marcas.net/wp-content/uploads/2020/01/Fifa-logo.png" alt="fifa">
             </a>
-        </div>        
+        </div>
 
-        <div class="nav navbar-nav col-xs-7">
-            <h2>Ligas de fútbol</h2>
+        <div *ngIf="liga" class="nav navbar-nav col-xs-7 d-flex flex-row align-items-center">
+            <h5>{{liga.nombre}}-{{liga.temporada}}</h5>
+            <img [src]="liga.logo" [alt]="liga.nombre" class="ml-2" style="max-height: 100px; max-width:50px;">
         </div>
 
         <div *ngIf="usuario" class="nav navbar-nav navbar-right">
-           Ha iniciado sesión: {{ usuario }}
+            Ha iniciado sesión: {{ usuario }}
         </div>
 
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Liga } from '../shared/liga.model';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() usuario: string;
+  @Input() liga: Liga;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }
