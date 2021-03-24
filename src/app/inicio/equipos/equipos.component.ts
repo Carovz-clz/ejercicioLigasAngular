@@ -9,9 +9,9 @@ import { ObtencionDatosService } from 'src/app/shared/obtencion-datos.service';
   styleUrls: ['./equipos.component.css']
 })
 export class EquiposComponent implements OnInit {
-  @Output() exponerIdLiga = new EventEmitter<number>();
   arrayEquipos: Equipo[];
   idLiga: number;
+  filtroInput = '';
 
   constructor(private ruta: ActivatedRoute, private obDatosService: ObtencionDatosService) { }
 
@@ -19,7 +19,6 @@ export class EquiposComponent implements OnInit {
     this.idLiga = this.ruta.snapshot.params['id'];
     this.arrayEquipos =  this.obDatosService.obtenerEquipos(this.idLiga);
     console.log(this.arrayEquipos);
-    this.exponerIdLiga.emit(this.idLiga);
   }
 
 }

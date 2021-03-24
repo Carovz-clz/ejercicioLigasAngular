@@ -16,6 +16,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ItemEventoComponent } from './eventos/item-evento/item-evento.component';
 import { EquipoComponent } from './inicio/equipos/equipo/equipo.component';
 import { EquiposComponent } from './inicio/equipos/equipos.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EquiposComponent } from './inicio/equipos/equipos.component';
     MenuComponent,
     ItemEventoComponent,
     EquipoComponent,
-    EquiposComponent
+    EquiposComponent,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
