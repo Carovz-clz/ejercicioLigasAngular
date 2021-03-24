@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Liga } from './shared/liga.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ejercicio-angular';
+  usuario: string;
+  liga: Liga;
+  sesionIniciada = false;
+
+  iniciarSesion(objetoSesion){
+    this.sesionIniciada = true;
+    this.usuario = objetoSesion.sesion;
+    this.liga = objetoSesion.liga;
+    console.log('Usuario logeado: '+ this.usuario);
+    console.log('Liga elegida: '+ this.liga.nombre);
+  }
+
+
 }
