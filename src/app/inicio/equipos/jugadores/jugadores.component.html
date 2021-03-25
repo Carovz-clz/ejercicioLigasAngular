@@ -2,10 +2,13 @@
     <div class="col-xs-12">
         <div class="row mb-2">
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-success mr-1" >Añadir Jugador</button>
-                <button type="submit" class="btn btn-danger mr-1" >Eliminar Jugador</button>
+                <button type="button" class="btn btn-success mr-1" (click)="nuevoJugador()">Añadir Jugador</button>
+                <button type="button" class="btn btn-danger mr-1" >Eliminar Jugador</button>
                 <button type="button" class="btn btn-secondary mr-1" (click)="volver()">Volver</button>
             </div>
+        </div>
+        <div class="row mb-2" *ngIf="formNuevoJugador">
+            <app-nuevo-jugador ></app-nuevo-jugador>
         </div>
         <div class="row mb-2">
             <div class="col-xs-12">
@@ -18,9 +21,7 @@
             <div class="col-xs-12">
                 <app-jugador *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [jugador]="jugadorEl"></app-jugador>
             </div>
-        </div>
-
-        
+        </div>     
 
         
     </div>   

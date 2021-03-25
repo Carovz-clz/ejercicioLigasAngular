@@ -19,6 +19,7 @@ import { EquiposComponent } from './inicio/equipos/equipos.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { JugadorComponent } from './inicio/equipos/jugadores/jugador/jugador.component';
 import { FiltroJugadoresPipe } from './pipes/filtro-jugadores.pipe';
+import { NuevoJugadorComponent } from './inicio/equipos/jugadores/nuevo-jugador/nuevo-jugador.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FiltroJugadoresPipe } from './pipes/filtro-jugadores.pipe';
     EquiposComponent,
     FiltroPipe,
     JugadorComponent,
-    FiltroJugadoresPipe
+    FiltroJugadoresPipe,
+    NuevoJugadorComponent
   ],
   imports: [
     BrowserModule,

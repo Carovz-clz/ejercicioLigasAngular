@@ -36,7 +36,6 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
 
 
   abrirModal(){
-    console.log(this.contenidoModal);
     this.modalRef = this.modal.open(this.contenidoModal, { size: 'md', centered: true });
   }
 

@@ -9,6 +9,7 @@ const routes: Routes = [
   {path:'', component: InicioComponent, pathMatch: 'full'},
   {path:'inicio/:id', component: EquiposComponent, children: [
     {path:':idequipo', component: JugadoresComponent},
+    {path:':idequipo/nuevojugador', component: JugadoresComponent},
   ]},
   {path:'eventos', component: EventosComponent},
 ];
