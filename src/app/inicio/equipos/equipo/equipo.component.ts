@@ -8,7 +8,6 @@ import { Equipo } from 'src/app/shared/equipo.model';
 })
 export class EquipoComponent implements OnInit {
   @Input() equipo: Equipo;
-  @Input() index: number;
 
   constructor() { }
 

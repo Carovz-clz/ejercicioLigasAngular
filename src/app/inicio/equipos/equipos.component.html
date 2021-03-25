@@ -6,7 +6,10 @@
     </div>
 </div>
 <div class="row mt-2" >
-    <div class="col-xs-12">
-        <app-equipo *ngFor="let equipoEl of arrayEquipos | filtro:filtroInput; let i = index " [equipo]="equipoEl" [index]="i"></app-equipo>
+    <div class="col-xs-5">
+        <app-equipo *ngFor="let equipoEl of arrayEquipos | filtro:filtroInput " [equipo]="equipoEl" [index]="i" ></app-equipo>
+    </div>
+    <div class="col-xs-7">
+        <router-outlet></router-outlet>
     </div>
 </div>

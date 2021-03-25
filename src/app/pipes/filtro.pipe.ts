@@ -8,12 +8,16 @@ export class FiltroPipe implements PipeTransform {
 
   transform(equipos: any[], arg: any): any {
     const resultEquipos = [];
-    for(const equipo of equipos){
-      if(equipo.nombreEquipo.indexOf(arg) > -1){
-        resultEquipos.push(equipo);
+    if(arg == ''){
+      return equipos;
+    }else{
+      for(const equipo of equipos){
+        if(equipo.nombreEquipo.indexOf(arg) > -1){
+          resultEquipos.push(equipo);
+        }
       }
-    }
-    return resultEquipos;
+      return resultEquipos;
+    }    
   }
 
 }
