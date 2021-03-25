@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Equipo } from '../shared/equipo.model';
 
 @Pipe({
   name: 'filtro'

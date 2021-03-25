@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { JugadoresComponent } from './inicio/equipos/equipo/jugadores/jugadores.component';
+import { JugadoresComponent } from './inicio/equipos/jugadores/jugadores.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,8 @@ import { ItemEventoComponent } from './eventos/item-evento/item-evento.component
 import { EquipoComponent } from './inicio/equipos/equipo/equipo.component';
 import { EquiposComponent } from './inicio/equipos/equipos.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { JugadorComponent } from './inicio/equipos/jugadores/jugador/jugador.component';
+import { FiltroJugadoresPipe } from './pipes/filtro-jugadores.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     ItemEventoComponent,
     EquipoComponent,
     EquiposComponent,
-    FiltroPipe
+    FiltroPipe,
+    JugadorComponent,
+    FiltroJugadoresPipe
   ],
   imports: [
     BrowserModule,

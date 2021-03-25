@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators"
 import { Equipo } from "./equipo.model";
 import { Evento } from "./evento.model";
+import { Jugador } from "./jugador.model";
 import { Liga } from "./liga.model";
 
 @Injectable({ providedIn: 'root' })
@@ -126,7 +127,47 @@ export class ObtencionDatosService {
             }
         ); 
 
-        return arrayEquipos;
+        return arrayEquipos;        
+    }
+
+    obtenerJugadores(idEquipo){
+        const headers = {
+            "x-rapidapi-key": "674ca3eec4msh0b12e4d1512aa2bp155cb5jsn0ac096a0badc",
+            "x-rapidapi-host": "api-football-v1.p.rapidapi.com"
+        }
+
+        const requestOptions = {
+            headers: new HttpHeaders(headers)
+        };
         
+        let arrayJugadores: Jugador[] = [];
+
+        this.http.get<any>('https://api-football-v1.p.rapidapi.com/v2/players/team/'+idEquipo, requestOptions)
+            .subscribe(response => {                
+                response.api.players.forEach(element => {      
+                    let edadJ = element.age ? element.age : '';  
+                    let ciudadJ = element.birth_place ? element.birth_place : '';  
+                    let paisJ = element.birth_country ? element.birth_country : '';  
+
+                    let jugadorObj: Jugador = {
+                        id: element.player_id,
+                        nombre: element.player_name, 
+                        edad: edadJ,
+                        ciudad: ciudadJ,
+                        pais: paisJ
+                    }
+                    arrayJugadores.push(jugadorObj);
+
+                    // if(!arrayJugadores.includes(jugadorObj)){
+                    //     arrayJugadores.push(jugadorObj);
+                    // }
+                    
+                });     
+                
+                
+            }
+        ); 
+
+        return arrayJugadores;   
     }
 }

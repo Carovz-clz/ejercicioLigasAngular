@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-10">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar jugador..." name="filtroInput"
+                [(ngModel)]="filtroInput">
+        </div>
+
+        <app-jugador *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [jugador]="jugadorEl"></app-jugador>
+    </div>   
+
+</div>
