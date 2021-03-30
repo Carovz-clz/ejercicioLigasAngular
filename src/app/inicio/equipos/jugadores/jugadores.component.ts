@@ -15,6 +15,7 @@ export class JugadoresComponent implements OnInit {
   idEquipo: number;
   formNuevoJugador = false;
   jugadorSeleccionado: Jugador;
+  modalConfirmacion = false;
 
   constructor(private ruta: ActivatedRoute, private router: Router, private obDatosService: ObtencionDatosService, private toastr: ToastrService) { }
 
@@ -69,21 +70,21 @@ export class JugadoresComponent implements OnInit {
   }
 
   eliminarJugador(){
+    this.modalConfirmacion = true;
+  }
 
-    if(confirm('¿Está seguro que quiere eliminar este jugador?')) {
-
+  confirmarEliminacion(confirmacion){
+    if(confirmacion){      
       if(this.obDatosService.eliminarJugador(this.jugadorSeleccionado.id) ){
         this.toastrExito('Se ha podido eliminar el jugador con éxito');
       }else{
         this.toastrError('No se ha podido eliminar el jugador.')
       }
-
     }else{
-      this.toastrWarning('Operación cancelada.')
+      this.toastrWarning('Operación cancelada.');
     }
 
-    
-
+    this.modalConfirmacion = false;
   }
 
 }
