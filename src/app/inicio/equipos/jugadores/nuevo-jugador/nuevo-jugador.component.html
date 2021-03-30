@@ -1,10 +1,11 @@
-<div>
-    <div class="row">
-        <h4>Añadir Jugador</h4>
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Nuevo jugador</h4>
     </div>
 
-    <div class="row">
-        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="modal-body" data-backdrop="static" data-keyboard="false">
+
             <div class="form-group col-xs-12">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" class="form-control" name="nombre" formControlName="nombre">
@@ -31,13 +32,15 @@
                 <input type="text" id="pais" class="form-control" name="pais" formControlName="pais">
             </div>
 
+        </div>
+
+        <div class="modal-footer">
             <div class="form-group col-xs-12">
                 <button type="submit" class="btn btn-success mr-2" [disabled]="!formulario.valid">Guardar</button>
-                <button type="submit" class="btn btn-success mr-2" (click)="cancelar()" >Cancelar</button>
+                <button type="button" class="btn btn-danger mr-2" (click)="cancelar()">Cancelar</button>
             </div>
-        </form>
+        </div>
+    </form>
 
-    </div>
 
-
-</div>
+</ng-template>

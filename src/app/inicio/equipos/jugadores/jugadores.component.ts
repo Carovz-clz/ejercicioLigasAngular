@@ -33,4 +33,14 @@ export class JugadoresComponent implements OnInit {
     this.formNuevoJugador = true;
   }
 
+  agregarJuagdor(jugador){
+    console.log('Jugador recibido: '+jugador);
+    this.obDatosService.agregarJugador(jugador, this.idEquipo);
+    this.formNuevoJugador = false;
+  }
+
+  cerrarModal(){
+    this.formNuevoJugador = false;
+  }
+
 }

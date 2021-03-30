@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Jugador } from 'src/app/shared/jugador.model';
@@ -8,13 +8,14 @@ import { Jugador } from 'src/app/shared/jugador.model';
   templateUrl: './nuevo-jugador.component.html',
   styleUrls: ['./nuevo-jugador.component.css']
 })
-export class NuevoJugadorComponent implements OnInit {
+export class NuevoJugadorComponent implements OnInit, AfterViewInit {
+  @ViewChild('contenido', {static: false}) contenidoModal: NgbModalRef;
   @Output() nuevoJugador = new EventEmitter<Jugador>();
   @Output() cancelarForm = new EventEmitter<boolean>();
   formulario: FormGroup;
   modalRef: NgbModalRef;
 
-  constructor() { }
+  constructor(private modal: NgbModal) { }
 
   ngOnInit(): void {
     this.formulario = new FormGroup({
@@ -23,6 +24,14 @@ export class NuevoJugadorComponent implements OnInit {
       'ciudad': new FormControl(null, Validators.required),
       'pais': new FormControl(null, Validators.required)
     });
+  }
+
+  ngAfterViewInit(){
+    this.abrirModal();
+  }
+
+  abrirModal(){
+    this.modalRef = this.modal.open(this.contenidoModal, { size: 'md', centered: true });
   }
 
   onSubmit(){
@@ -35,11 +44,15 @@ export class NuevoJugadorComponent implements OnInit {
     }
 
     this.nuevoJugador.emit(jugador);
+    this.modalRef.close();
 
   }
 
   cancelar(){
     this.cancelarForm.emit(false);
+    this.modalRef.close();
   }
+
+
 
 }
