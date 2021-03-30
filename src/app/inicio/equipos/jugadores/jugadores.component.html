@@ -3,7 +3,7 @@
         <div class="row mb-2">
             <div class="col-xs-12">
                 <button type="button" class="btn btn-success mr-1" (click)="nuevoJugador()">Añadir Jugador</button>
-                <button type="button" class="btn btn-danger mr-1" >Eliminar Jugador</button>
+                <button type="button" class="btn btn-danger mr-1" (click)="eliminarJugador()" >Eliminar Jugador</button>
                 <button type="button" class="btn btn-secondary mr-1" (click)="volver()">Volver</button>
             </div>
         </div>
@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <app-jugador *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [jugador]="jugadorEl"></app-jugador>
+                <app-jugador *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [jugador]="jugadorEl" (jugadorSeleccionado)="guardarJugadorSeleccionado($event)"></app-jugador>
             </div>
         </div>     
 

@@ -1,4 +1,4 @@
-<li class="list-group-item list-group-item-action flex-column align-items-center ">
+<a class="list-group-item list-group-item-action flex-column align-items-center " [class.active]="activo" (click)="seleccionarJugador()"  style="cursor: pointer;">
     <h6 class="">{{jugador.nombre}}<small> Edad: {{ jugador.edad }}</small></h6>
     <p>{{ jugador.ciudad }}, {{ jugador.pais }}</p>
-</li>
+</a>

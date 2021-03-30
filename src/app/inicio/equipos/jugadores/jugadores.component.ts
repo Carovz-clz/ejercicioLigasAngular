@@ -14,6 +14,7 @@ export class JugadoresComponent implements OnInit {
   arrayJugadores: Jugador[];
   idEquipo: number;
   formNuevoJugador = false;
+  jugadorSeleccionado: Jugador;
 
   constructor(private ruta: ActivatedRoute, private router: Router, private obDatosService: ObtencionDatosService, private toastr: ToastrService) { }
 
@@ -37,29 +38,52 @@ export class JugadoresComponent implements OnInit {
   agregarJuagdor(jugador){
     console.log('Jugador recibido: '+jugador);
     if (this.obDatosService.agregarJugador(jugador, this.idEquipo)){
-      this.toastrExito();
+      this.toastrExito('Jugador insertado con éxito!');
     }else{
-      this.toastrError();
+      this.toastrError('No se ha podido insertar el jugador.');
     }
 
     this.formNuevoJugador = false;
   }
 
-  toastrExito(){
-    this.toastr.success('Jugador insertado con éxito!');
+  toastrExito(mensaje){
+    this.toastr.success(mensaje);
   }
 
-  toastrError(){
-    this.toastr.error('No se ha podido insertar el jugador.');
+  toastrError(mensaje){
+    this.toastr.error(mensaje);
   }
 
-  toastrWarning(){
-    this.toastr.warning('Inserción del jugador cancelada.');
+  toastrWarning(mensaje){
+    this.toastr.warning(mensaje);
   }
 
   cerrarModal(){
     this.formNuevoJugador = false;
-    this.toastrWarning();
+    this.toastrWarning('Inserción del jugador cancelada.');
+  }
+
+  guardarJugadorSeleccionado(jugador){
+    this.jugadorSeleccionado = jugador;
+    console.log(this.jugadorSeleccionado);
+  }
+
+  eliminarJugador(){
+
+    if(confirm('¿Está seguro que quiere eliminar este jugador?')) {
+
+      if(this.obDatosService.eliminarJugador(this.jugadorSeleccionado.id) ){
+        this.toastrExito('Se ha podido eliminar el jugador con éxito');
+      }else{
+        this.toastrError('No se ha podido eliminar el jugador.')
+      }
+
+    }else{
+      this.toastrWarning('Operación cancelada.')
+    }
+
+    
+
   }
 
 }
