@@ -14,8 +14,9 @@ export class JugadoresComponent implements OnInit {
   arrayJugadores: Jugador[];
   idEquipo: number;
   formNuevoJugador = false;
-  jugadorSeleccionado: Jugador;
+  jugadorSeleccionado = 0;
   modalConfirmacion = false;
+  activo = false;
 
   constructor(private ruta: ActivatedRoute, private router: Router, private obDatosService: ObtencionDatosService, private toastr: ToastrService) { }
 
@@ -64,8 +65,8 @@ export class JugadoresComponent implements OnInit {
     this.toastrWarning('Inserción del jugador cancelada.');
   }
 
-  guardarJugadorSeleccionado(jugador){
-    this.jugadorSeleccionado = jugador;
+  guardarJugadorSeleccionado(idJugador){
+    this.jugadorSeleccionado = idJugador;
     console.log(this.jugadorSeleccionado);
   }
 
@@ -75,7 +76,7 @@ export class JugadoresComponent implements OnInit {
 
   confirmarEliminacion(confirmacion){
     if(confirmacion){      
-      if(this.obDatosService.eliminarJugador(this.jugadorSeleccionado.id) ){
+      if(this.obDatosService.eliminarJugador(this.jugadorSeleccionado) ){
         this.toastrExito('Se ha podido eliminar el jugador con éxito');
       }else{
         this.toastrError('No se ha podido eliminar el jugador.')

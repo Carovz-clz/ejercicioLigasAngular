@@ -19,7 +19,11 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <app-jugador *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [jugador]="jugadorEl" (jugadorSeleccionado)="guardarJugadorSeleccionado($event)"></app-jugador>
+                <a class="list-group-item list-group-item-action flex-column align-items-center " style="cursor: pointer;"
+                *ngFor="let jugadorEl of arrayJugadores | filtroJugadores:filtroInput " [ngClass]="{active: jugadorEl.id === jugadorSeleccionado}" (click)="guardarJugadorSeleccionado(jugadorEl.id)">
+                    <h6 class="">{{jugadorEl.nombre}}<small> Edad: {{ jugadorEl.edad }}</small></h6>
+                    <p>{{ jugadorEl.ciudad }}, {{ jugadorEl.pais }}</p>
+                </a>
             </div>
         </div>     
 
