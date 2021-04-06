@@ -7,7 +7,7 @@ import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
   {path:'', component: InicioComponent, pathMatch: 'full'},
-  {path:'inicio/:id', component: EquiposComponent, children: [
+  {path:'inicio/:id/:temporada', component: EquiposComponent, children: [
     {path:':idequipo', component: JugadoresComponent},
     {path:':idequipo/nuevojugador', component: JugadoresComponent},
   ]},

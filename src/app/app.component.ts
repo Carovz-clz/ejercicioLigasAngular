@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
     this.sesionIniciada = true;
     this.usuario = objetoSesion.sesion;
     this.liga = objetoSesion.liga;
-    this.router.navigate(['/inicio', this.liga.id]);
+    this.router.navigate(['/inicio', this.liga.id, this.liga.temporada]);
   }
 
   ngOnInit(){

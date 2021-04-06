@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { DatosService } from 'src/app/shared/datos.service';
 import { Jugador } from 'src/app/shared/jugador.model';
 import { ObtencionDatosService } from 'src/app/shared/obtencion-datos.service';
 
@@ -12,24 +14,27 @@ import { ObtencionDatosService } from 'src/app/shared/obtencion-datos.service';
 export class JugadoresComponent implements OnInit {
   filtroInput = '';
   arrayJugadores: Jugador[];
-  idEquipo: number;
+  @Input() idEquipo: number;
+  @Input() temporada: number;
   formNuevoJugador = false;
   jugadorSeleccionado: Jugador;
   modalConfirmacion = false;
+  cambioEquipo$: Observable<number>;
+  @Output() quitarJugadores = new EventEmitter<any>();
 
-  constructor(private ruta: ActivatedRoute, private router: Router, private obDatosService: ObtencionDatosService, private toastr: ToastrService) { }
+  constructor(private ruta: ActivatedRoute, private router: Router, private obDatosService: ObtencionDatosService, private toastr: ToastrService, private datosService: DatosService) { }
 
-  ngOnInit(): void {
-    this.ruta.params.subscribe(
-      (params: Params) => {
-        this.idEquipo = params['idequipo'];
-        this.arrayJugadores = this.obDatosService.obtenerJugadores(this.idEquipo);
-      }
-    );
+  ngOnInit(): void {    
+    this.cambioEquipo$ = this.datosService.getcambioEquipo$();
+
+    this.cambioEquipo$.subscribe(id =>{
+      this.idEquipo = id;
+      this.arrayJugadores = this.obDatosService.obtenerJugadores(this.idEquipo, this.temporada);      
+    } );    
   }
 
   volver(){
-    this.router.navigate(['../'], {relativeTo: this.ruta});
+    this.quitarJugadores.emit();
   }
 
   nuevoJugador(){
