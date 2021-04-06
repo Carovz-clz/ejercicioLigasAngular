@@ -85,6 +85,7 @@ export class JugadoresComponent implements OnInit {
     }
 
     this.modalConfirmacion = false;
+    this.jugadorSeleccionado = {id: 0, nombre: '', ciudad: '', pais: '', edad: 0};
   }
 
 }
