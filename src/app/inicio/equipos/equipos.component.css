@@ -1,6 +1,17 @@
-.equipos{
+.completo{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
     width: 100%;
 }
 
-.equipo{
-    width: 30%;}
+.mitad{
+    width: 40%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.jugadores{
+    margin-left: auto;
+}
+

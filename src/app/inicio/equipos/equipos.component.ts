@@ -17,6 +17,7 @@ export class EquiposComponent implements OnInit {
   filtroInput = '';
   idEquipoAMostrar: number = 0;
   cambioEquipo$: Observable<number>;
+  mostrarEquipos = false;
 
   constructor(private datosService: DatosService, private ruta: ActivatedRoute, private obDatosService: ObtencionDatosService) { }
 
@@ -32,10 +33,12 @@ export class EquiposComponent implements OnInit {
 
   cargarJugadores(id){
     this.datosService.guardarIdEquipoAMostrar(id);
+    this.mostrarEquipos = true;
   }
 
   cerrarJugadores(){
     this.idEquipoAMostrar = 0;
+    this.mostrarEquipos = false;
   }
 
   

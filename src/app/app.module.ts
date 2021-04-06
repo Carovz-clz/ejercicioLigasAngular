@@ -19,7 +19,6 @@ import { ItemEventoComponent } from './eventos/item-evento/item-evento.component
 import { EquipoComponent } from './inicio/equipos/equipo/equipo.component';
 import { EquiposComponent } from './inicio/equipos/equipos.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
-import { JugadorComponent } from './inicio/equipos/jugadores/jugador/jugador.component';
 import { FiltroJugadoresPipe } from './pipes/filtro-jugadores.pipe';
 import { NuevoJugadorComponent } from './inicio/equipos/jugadores/nuevo-jugador/nuevo-jugador.component';
 import { ModalConfirmacionComponent } from './shared/modal-confirmacion/modal-confirmacion.component';
@@ -38,7 +37,6 @@ import { ModalConfirmacionComponent } from './shared/modal-confirmacion/modal-co
     EquipoComponent,
     EquiposComponent,
     FiltroPipe,
-    JugadorComponent,
     FiltroJugadoresPipe,
     NuevoJugadorComponent,
     ModalConfirmacionComponent,

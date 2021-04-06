@@ -10,6 +10,7 @@ import { Equipo } from 'src/app/shared/equipo.model';
 export class EquipoComponent implements OnInit {
   @Input() equipo: Equipo;
   @Output() cargarJugadores = new EventEmitter<number>();
+  activo = false;
 
   constructor(private datosService: DatosService) { }
 
@@ -17,6 +18,7 @@ export class EquipoComponent implements OnInit {
   }
 
   mostrarJugadores(idEquipo){
+    this.activo = true;
     this.cargarJugadores.emit(idEquipo);
   }
 

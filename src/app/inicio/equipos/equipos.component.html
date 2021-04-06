@@ -5,11 +5,13 @@
         </div>
     </div>
 </div>
-<div class="row mt-2 d-flex flex-row justify-content-between" >
-    <div class="col-xs-5">
+<div class="row mt-2 " >
+    <div  [ngClass]="{'completo': !mostrarEquipos, 'mitad': mostrarEquipos}">
         <app-equipo *ngFor="let equipoEl of arrayEquipos | filtro:filtroInput " [equipo]="equipoEl" [temporada]="temporada" (cargarJugadores)="cargarJugadores($event)" ></app-equipo>
     </div>
-    <div class="col-xs-7" *ngIf="idEquipoAMostrar!=0">
-        <app-jugadores [idEquipo]="idEquipoAMostrar" [temporada]="temporada" (quitarJugadores)="cerrarJugadores()"></app-jugadores>
+
+    <div class="jugadores" *ngIf="mostrarEquipos">
+        <app-jugadores  [idEquipo]="idEquipoAMostrar" [temporada]="temporada" (quitarJugadores)="cerrarJugadores()"></app-jugadores>
     </div>
+  
 </div>
