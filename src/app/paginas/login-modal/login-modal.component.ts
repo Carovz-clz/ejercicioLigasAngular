@@ -11,16 +11,31 @@ import { ObtencionDatosService } from '../../shared/servicios/obtencion-datos.se
 })
 export class LoginModalComponent implements OnInit, AfterViewInit {
 
- @ViewChild('contenido', {static: false}) contenidoModal: NgbModalRef;
- @Output() inicioSesion = new EventEmitter<{sesion: string, liga: Liga}>();
- modalRef: NgbModalRef;
- formulario: FormGroup;
- arrayLigas: Liga[];
+  @ViewChild('contenido', { static: false }) contenidoModal: NgbModalRef;
+  @Output() inicioSesion = new EventEmitter<{ sesion: string, liga: Liga }>();
+  modalRef: NgbModalRef;
+  formulario: FormGroup;
+  arrayLigas: Liga[] = [];
 
   constructor(private modal: NgbModal, private obDatosService: ObtencionDatosService) { }
 
   ngOnInit() {
-    this.arrayLigas = this.obDatosService.obtenerLigas();
+    this.obDatosService.obtenerLigas()
+      .subscribe(response => {
+        response.api.leagues.forEach(element => {
+
+          let ligaObj: Liga = {
+            id: element.league_id,
+            logo: element.logo,
+            nombre: element.name,
+            pais: element.country,
+            temporada: element.season
+          }
+          this.arrayLigas.push(ligaObj);
+        });
+      }
+
+      );
 
     this.formulario = new FormGroup({
       'nombre': new FormControl(null, Validators.required),
@@ -30,22 +45,22 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.abrirModal();
   }
 
 
-  abrirModal(){
+  abrirModal() {
     this.modalRef = this.modal.open(this.contenidoModal, { size: 'md', centered: true });
   }
 
-  onSubmit(){
+  onSubmit() {
     let sesion = this.formulario.get('nombre').value;
     let ligaSelect = +this.formulario.get('ligasSelect').value;
 
-    let liga:Liga = this.arrayLigas.find( l => l.id == ligaSelect );
+    let liga: Liga = this.arrayLigas.find(l => l.id == ligaSelect);
 
-    this.inicioSesion.emit({sesion, liga});
+    this.inicioSesion.emit({ sesion, liga });
     this.modalRef.close();
 
   }
