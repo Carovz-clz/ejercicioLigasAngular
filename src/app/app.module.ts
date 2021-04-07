@@ -6,22 +6,22 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { JugadoresComponent } from './inicio/equipos/jugadores/jugadores.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { LoginModalComponent } from './paginas/login-modal/login-modal.component';
+import { HeaderComponent } from './paginas/header/header.component';
+import { FooterComponent } from './paginas/footer/footer.component';
+import { JugadoresComponent } from './componentes/jugadores/jugadores.component';
+import { EventosComponent } from './paginas/eventos/eventos.component';
+import { InicioComponent } from './paginas/inicio/inicio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MenuComponent } from './menu/menu.component';
-import { ItemEventoComponent } from './eventos/item-evento/item-evento.component';
-import { EquipoComponent } from './inicio/equipos/equipo/equipo.component';
-import { EquiposComponent } from './inicio/equipos/equipos.component';
-import { FiltroPipe } from './pipes/filtro.pipe';
-import { FiltroJugadoresPipe } from './pipes/filtro-jugadores.pipe';
-import { NuevoJugadorComponent } from './inicio/equipos/jugadores/nuevo-jugador/nuevo-jugador.component';
-import { ModalConfirmacionComponent } from './shared/modal-confirmacion/modal-confirmacion.component';
+import { MenuComponent } from './paginas/menu/menu.component';
+import { ItemEventoComponent } from './componentes/item-evento/item-evento.component';
+import { EquipoComponent } from './componentes/equipo/equipo.component';
+import { EquiposComponent } from './paginas/inicio/equipos/equipos.component';
+import { FiltroPipe } from './shared/pipes/filtro.pipe';
+import { FiltroJugadoresPipe } from './shared/pipes/filtro-jugadores.pipe';
+import { NuevoJugadorComponent } from './componentes/nuevo-jugador/nuevo-jugador.component';
+import { ModalConfirmacionComponent } from './shared/componentes/modal-confirmacion/modal-confirmacion.component';
 
 @NgModule({
   declarations: [

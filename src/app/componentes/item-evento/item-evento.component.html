@@ -1,0 +1,9 @@
+<li class="list-group-item flex-column align-items-start ">
+    <div class="d-flex w-300 justify-content-between">
+        <h5 class="mb-1">{{ evento.nombreJugador }}</h5>
+        <small>{{ evento.nombreEquipo }}</small>
+    </div>
+    <p class="mb-1" *ngIf="evento.detalle != ''">Detalle: {{ evento.detalle }}</p>
+    <p class="mb-1" *ngIf="evento.comentarios != ''">Detalle: {{ evento.comentarios }}</p>
+    <small *ngIf="evento.arbitro != ''">Árbitro: {{ evento.arbitro }}</small>
+</li>

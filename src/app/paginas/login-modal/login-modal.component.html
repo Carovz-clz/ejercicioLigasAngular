@@ -1,0 +1,47 @@
+<!-- Hacer que modal no se cierre a menos que pulse iniciar sesión data-backdrop="static" data-keyboard="false"-->
+
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Iniciar Sesión</h4>
+    </div>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="modal-body" data-backdrop="static" data-keyboard="false">
+
+            <div class="form-group">
+                <label for="nombre">Nombre de usuario</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" formControlName="nombre">
+                <span class="help-block" *ngIf="!formulario.get('nombre').valid && formulario.get('nombre').touched">
+                    Introduzca su nombre de usuario
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" class="form-control" name="password" formControlName="password">
+                <span class="help-block"
+                    *ngIf="!formulario.get('password').valid && formulario.get('password').touched">
+                    Introduzca su contraseña
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="ligasSelect">Seleccione una liga</label>
+                <select name="ligasSelect" id="ligasSelect" class="form-control" formControlName="ligasSelect" >
+                    <option  [value]="element.id" *ngFor="let element of arrayLigas; let i = index">{{ element.nombre }} {{ element.temporada }} - {{ element.pais }}</option>
+                </select>
+                <span class="help-block"
+                    *ngIf="!formulario.get('ligasSelect').valid && formulario.get('ligasSelect').touched">
+                    Seleccione una liga
+                </span>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" [disabled]="!formulario.valid">Iniciar Sesión</button>
+        </div>
+    </form>
+
+
+</ng-template>

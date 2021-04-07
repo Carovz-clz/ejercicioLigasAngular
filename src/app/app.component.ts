@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Liga } from './shared/liga.model';
+import {  Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
+import { Liga } from './shared/modelos/liga.model';
 
 @Component({
   selector: 'app-root',
