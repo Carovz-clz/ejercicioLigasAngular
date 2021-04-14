@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Liga } from '../shared/liga.model';
+import { Liga } from '../../shared/modelos/liga.model';
 
 @Component({
   selector: 'app-header',
