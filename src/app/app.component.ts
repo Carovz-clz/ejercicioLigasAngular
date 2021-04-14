@@ -8,7 +8,7 @@ import { Liga } from './shared/modelos/liga.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  
+  title = 'ejercicio-angular';
   usuario: string;
   liga: Liga;
   sesionIniciada = false;

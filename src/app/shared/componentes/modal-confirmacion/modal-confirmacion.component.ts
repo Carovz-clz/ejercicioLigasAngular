@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,6 +9,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 export class ModalConfirmacionComponent implements OnInit, AfterViewInit {
 
   @ViewChild('contenido', {static: false}) contenidoModal: NgbModalRef;
+  @Input() mensaje: string = '';
   @Output() confirmar = new EventEmitter<boolean>();
   modalRef: NgbModalRef;
 

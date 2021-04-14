@@ -28,7 +28,7 @@
         </div>     
 
         <div class="row mb-2" *ngIf="modalConfirmacion">
-            <app-modal-confirmacion (confirmar)="confirmarEliminacion($event)"></app-modal-confirmacion>
+            <app-modal-confirmacion [mensaje]="'Va a eliminar un jugador, ¿desea continuar con la operación?'" (confirmar)="confirmarEliminacion($event)"></app-modal-confirmacion>
         </div>
         
     </div>   
