@@ -1,0 +1,8 @@
+.container{
+   min-height: 80vh;
+   height: auto !important;
+}
+
+.contenido{
+    flex: 1;
+}

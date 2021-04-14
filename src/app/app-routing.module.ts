@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { EventosComponent } from './paginas/eventos/eventos.component';
 import { JugadoresComponent } from './paginas/jugadores/jugadores.component';
 import { EquiposComponent } from './paginas/inicio/equipos/equipos.component';
@@ -18,3 +19,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

@@ -20,22 +20,24 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
   constructor(private modal: NgbModal, private obDatosService: ObtencionDatosService) { }
 
   ngOnInit() {
-    this.obDatosService.obtenerLigas()
-      .subscribe(response => {
-        response.api.leagues.forEach(element => {
+    // this.obDatosService.obtenerLigas()
+    //   .subscribe(response => {
+    //     response.api.leagues.forEach(element => {
 
-          let ligaObj: Liga = {
-            id: element.league_id,
-            logo: element.logo,
-            nombre: element.name,
-            pais: element.country,
-            temporada: element.season
-          }
-          this.arrayLigas.push(ligaObj);
-        });
-      }
+    //       let ligaObj: Liga = {
+    //         id: element.league_id,
+    //         logo: element.logo,
+    //         nombre: element.name,
+    //         pais: element.country,
+    //         temporada: element.season
+    //       }
+    //       this.arrayLigas.push(ligaObj);
+    //     });
+    //   }
 
-      );
+    //   );
+
+    this.arrayLigas.push({id: 64, logo: "https://media.api-sports.io/football/leagues/140.png", nombre: "Primera Division", pais: "Spain", temporada: '2016'})
 
     this.formulario = new FormGroup({
       'nombre': new FormControl(null, Validators.required),
@@ -59,6 +61,7 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
     let ligaSelect = +this.formulario.get('ligasSelect').value;
 
     let liga: Liga = this.arrayLigas.find(l => l.id == ligaSelect);
+
 
     this.inicioSesion.emit({ sesion, liga });
     this.modalRef.close();

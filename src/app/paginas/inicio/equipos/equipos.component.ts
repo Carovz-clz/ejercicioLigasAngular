@@ -18,6 +18,7 @@ export class EquiposComponent implements OnInit {
   idEquipoAMostrar: number = 0;
   cambioEquipo$: Observable<number>;
   mostrarEquipos = false;
+  equipoObj: Equipo;
 
   constructor(private datosService: DatosService, private ruta: ActivatedRoute, private obDatosService: ObtencionDatosService) { }
 
@@ -28,27 +29,131 @@ export class EquiposComponent implements OnInit {
     this.cambioEquipo$ = this.datosService.getcambioEquipo$();
     this.cambioEquipo$.subscribe(id => this.idEquipoAMostrar = id);
 
-    this.obDatosService.obtenerEquipos(this.idLiga)
-      .subscribe(response => {
+    // this.obDatosService.obtenerEquipos(this.idLiga)
+    //   .subscribe(response => {
 
-        response.api.teams.forEach(element => {
-          let idE = element.team_id;
-          let nombreE = element.name ? element.name : '';
-          let logoE = element.logo ? element.logo : '';
+    //     response.api.teams.forEach(element => {
+    //       let idE = element.team_id;
+    //       let nombreE = element.name ? element.name : '';
+    //       let logoE = element.logo ? element.logo : '';
 
-          let equipoObj: Equipo = {
-            id: idE,
-            nombreEquipo: nombreE,
-            logo: logoE
-          }
-          this.arrayEquipos.push(equipoObj);
-        });
+    //       let equipoObj: Equipo = {
+    //         id: idE,
+    //         nombreEquipo: nombreE,
+    //         logo: logoE
+    //       }
+    //       this.arrayEquipos.push(equipoObj);
+    //     });
 
-      });
+    //   });
+
+    this.arrayEquipos = [
+      {
+        "id": 529,
+        "nombreEquipo": "Barcelona",
+        "logo": "https://media.api-sports.io/football/teams/529.png"
+      },
+      {
+        "id": 530,
+        "nombreEquipo": "Atletico Madrid",
+        "logo": "https://media.api-sports.io/football/teams/530.png"
+      },
+      {
+        "id": 531,
+        "nombreEquipo": "Athletic Club",
+        "logo": "https://media.api-sports.io/football/teams/531.png"
+      },
+      {
+        "id": 532,
+        "nombreEquipo": "Valencia",
+        "logo": "https://media.api-sports.io/football/teams/532.png"
+      },
+      {
+        "id": 533,
+        "nombreEquipo": "Villarreal",
+        "logo": "https://media.api-sports.io/football/teams/533.png"
+      },
+      {
+        "id": 534,
+        "nombreEquipo": "Las Palmas",
+        "logo": "https://media.api-sports.io/football/teams/534.png"
+      },
+      {
+        "id": 535,
+        "nombreEquipo": "Malaga",
+        "logo": "https://media.api-sports.io/football/teams/535.png"
+      },
+      {
+        "id": 536,
+        "nombreEquipo": "Sevilla",
+        "logo": "https://media.api-sports.io/football/teams/536.png"
+      },
+      {
+        "id": 537,
+        "nombreEquipo": "Leganes",
+        "logo": "https://media.api-sports.io/football/teams/537.png"
+      },
+      {
+        "id": 538,
+        "nombreEquipo": "Celta Vigo",
+        "logo": "https://media.api-sports.io/football/teams/538.png"
+      },
+      {
+        "id": 540,
+        "nombreEquipo": "Espanyol",
+        "logo": "https://media.api-sports.io/football/teams/540.png"
+      },
+      {
+        "id": 541,
+        "nombreEquipo": "Real Madrid",
+        "logo": "https://media.api-sports.io/football/teams/541.png"
+      },
+      {
+        "id": 542,
+        "nombreEquipo": "Alaves",
+        "logo": "https://media.api-sports.io/football/teams/542.png"
+      },
+      {
+        "id": 543,
+        "nombreEquipo": "Real Betis",
+        "logo": "https://media.api-sports.io/football/teams/543.png"
+      },
+      {
+        "id": 544,
+        "nombreEquipo": "Deportivo La Coruna",
+        "logo": "https://media.api-sports.io/football/teams/544.png"
+      },
+      {
+        "id": 545,
+        "nombreEquipo": "Eibar",
+        "logo": "https://media.api-sports.io/football/teams/545.png"
+      },
+      {
+        "id": 548,
+        "nombreEquipo": "Real Sociedad",
+        "logo": "https://media.api-sports.io/football/teams/548.png"
+      },
+      {
+        "id": 715,
+        "nombreEquipo": "Granada CF",
+        "logo": "https://media.api-sports.io/football/teams/715.png"
+      },
+      {
+        "id": 727,
+        "nombreEquipo": "Osasuna",
+        "logo": "https://media.api-sports.io/football/teams/727.png"
+      },
+      {
+        "id": 731,
+        "nombreEquipo": "Sporting Gijon",
+        "logo": "https://media.api-sports.io/football/teams/731.png"
+      }
+    ]
   }
 
-  cargarJugadores(id) {
-    this.datosService.guardarIdEquipoAMostrar(id);
+  cargarJugadores(equipo) {
+    this.datosService.guardarIdEquipoAMostrar(equipo.id);
+    this.equipoObj = equipo;
     this.mostrarEquipos = true;
   }
 

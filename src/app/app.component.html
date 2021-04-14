@@ -2,7 +2,7 @@
 <app-menu *ngIf="sesionIniciada" [idLiga]="liga.id" [temporada]="liga.temporada"></app-menu>
 <app-login-modal *ngIf="!sesionIniciada" (inicioSesion)="iniciarSesion($event)" ></app-login-modal>
 <div class="container">
-  <div class="row">
+  <div class="row contenido">
     <div class="col">
       <router-outlet></router-outlet>
     </div>

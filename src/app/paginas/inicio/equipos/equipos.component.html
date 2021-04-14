@@ -1,16 +1,17 @@
-<div class="row mt-2">
-    <div class="col-xs-6">
+<div class="row mt-2 ">
+    <div class="col-xs-12 col-md-4 " [ngClass]="{'divBuscador':mostrarEquipos}">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Buscar equipo..." name="filtroInput" [(ngModel)]="filtroInput" >
         </div>
     </div>
 </div>
 <div class="row mt-2 " >
-    <div  [ngClass]="{'completo': !mostrarEquipos, 'mitad': mostrarEquipos}">
+    <div class="col-xs-12 "  [ngClass]="{'completo': !mostrarEquipos, 'mitad': mostrarEquipos}">
         <app-equipo *ngFor="let equipoEl of arrayEquipos | filtro:filtroInput " [equipo]="equipoEl" [temporada]="temporada" (cargarJugadores)="cargarJugadores($event)" ></app-equipo>
     </div>
 
     <div class="jugadores" *ngIf="mostrarEquipos">
+        <h4>Jugadores de {{ equipoObj.nombreEquipo }}</h4>
         <app-jugadores  [idEquipo]="idEquipoAMostrar" [temporada]="temporada" (quitarJugadores)="cerrarJugadores()"></app-jugadores>
     </div>
   
