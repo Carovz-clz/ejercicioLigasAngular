@@ -50,7 +50,8 @@ import { ModalConfirmacionComponent } from './shared/componentes/modal-confirmac
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
   ],
   providers: [],

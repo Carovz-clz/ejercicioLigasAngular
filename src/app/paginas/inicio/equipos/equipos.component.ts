@@ -4,11 +4,20 @@ import { Observable, Subject } from 'rxjs';
 import { DatosService } from 'src/app/shared/servicios/datos.service';
 import { Equipo } from 'src/app/shared/modelos/equipo.model';
 import { ObtencionDatosService } from 'src/app/shared/servicios/obtencion-datos.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-equipos',
   templateUrl: './equipos.component.html',
-  styleUrls: ['./equipos.component.css']
+  styleUrls: ['./equipos.component.css',],
+  animations: [
+    trigger('changeState', [
+      state('mostrarEquipos', style({ 'display': 'grid', 'grid-template-columns': 'repeat(3, 1fr)',  'grid-gap': '10px', 'width': '100%' })),
+      state('mostrarJugadores', style({ 'width':' 40%',  'display': 'grid', 'grid-template-columns': 'repeat(1, 1fr)'})),
+      transition('mostrarEquipos=>mostrarJugadores', [animate('0.5s ease-out')]),
+      transition('mostrarJugadores=>mostrarEquipos', [animate('0.5s ease-in')])
+    ])
+  ]
 })
 export class EquiposComponent implements OnInit {
   arrayEquipos: Equipo[] = [];
@@ -18,6 +27,7 @@ export class EquiposComponent implements OnInit {
   idEquipoAMostrar: number = 0;
   cambioEquipo$: Observable<number>;
   mostrarEquipos = false;
+  estadoActual = 'mostrarEquipos';
   equipoObj: Equipo;
 
   constructor(private datosService: DatosService, private ruta: ActivatedRoute, private obDatosService: ObtencionDatosService) { }
@@ -155,11 +165,13 @@ export class EquiposComponent implements OnInit {
     this.datosService.guardarIdEquipoAMostrar(equipo.id);
     this.equipoObj = equipo;
     this.mostrarEquipos = true;
+    this.estadoActual = 'mostrarJugadores';
   }
 
   cerrarJugadores() {
     this.idEquipoAMostrar = 0;
     this.mostrarEquipos = false;
+    this.estadoActual = 'mostrarEquipos';
   }
 
 
