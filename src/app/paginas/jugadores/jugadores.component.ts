@@ -45,7 +45,6 @@ export class JugadoresComponent implements OnInit {
   }
 
   guardarJugadoresEnArray(response){
-    console.log("response ", response)
     response.api.players.forEach(element => {
       if (element.season == this.temporada) {
         let edadJ = element.age ? element.age : '';

@@ -1,0 +1,38 @@
+.completo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+    transition-property: width;
+    transition-duration: 0.5s;
+
+    @media screen and (max-width: 480px) {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        width: 100%;
+        margin: 1em;
+    }
+}
+
+.mitad {
+    width: 40%;
+    display: grid;
+    grid-template-columns: 1fr;
+    transition-property: width;
+    transition-duration: 0.5s;
+
+    @media screen and (max-width: 480px) {
+        display: none;
+    }
+}
+
+.jugadores {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .divBuscador {
+        display: none;
+    }
+}

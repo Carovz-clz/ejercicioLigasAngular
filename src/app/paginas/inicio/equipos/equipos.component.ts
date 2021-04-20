@@ -9,7 +9,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 @Component({
   selector: 'app-equipos',
   templateUrl: './equipos.component.html',
-  styleUrls: ['./equipos.component.css',],
+  styleUrls: ['./equipos.component.scss',],
   animations: [
     trigger('changeState', [
       state('mostrarEquipos', style({ 'display': 'grid', 'grid-template-columns': 'repeat(3, 1fr)',  'grid-gap': '10px', 'width': '100%' })),
